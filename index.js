@@ -1,4 +1,5 @@
 const batteryBatches = [4, 5, 3, 4, 4, 6, 5];
+let totalBatteries = batteryBatches.reduce((sum, value) => sum + value)
 
 const monologueLines = [
   'Who are you talking to right now?',
@@ -16,3 +17,22 @@ const monologueLines = [
   'No.',
   'I am the one who knocks!'
 ];
+
+// let wordCountMap = monologueLines.reduce(counter)
+//
+// function counter(accumulator, currentValue, currentIndex, array){
+//   return Object.assign({}, {[currentValue]: accumulator} )
+// }
+
+let wordCountMap = monologueLines.reduce(
+  function(accumulator, currentValue) {
+    let length = currentValue.split(" ").length
+
+    if(accumulator[length]) {
+      accumulator[length] += 1
+    } else {
+      accumulator[length] = 1
+    }
+  return accumulator
+  },
+{})
